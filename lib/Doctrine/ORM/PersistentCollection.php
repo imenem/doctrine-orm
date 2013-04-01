@@ -615,6 +615,46 @@ final class PersistentCollection implements Collection, Selectable
     /**
      * {@inheritdoc}
      */
+    public function reduce(Closure $func, $initial = null)
+    {
+        $this->initialize();
+
+        return $this->coll->reduce($func, $initial);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unique($sort_flags = null)
+    {
+        $this->initialize();
+
+        return $this->coll->unique($sort_flags);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function groupBy(Closure $callback)
+    {
+        $this->initialize();
+
+        return $this->coll->groupBy($callback);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function indexBy(Closure $callback)
+    {
+        $this->initialize();
+
+        return $this->coll->indexBy($callback);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function filter(Closure $p)
     {
         $this->initialize();
